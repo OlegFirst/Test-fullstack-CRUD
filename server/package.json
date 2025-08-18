@@ -15,21 +15,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@babel/preset-env": "^7.27.2",
-    "babel-jest": "^30.0.0-beta.3",
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.0",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2",
-    "mini-css-extract-plugin": "^2.9.2",
-    "multer": "^1.4.5-lts.2",
-    "mysql2": "^3.11.4",
-    "postcss-loader": "^8.1.1",
-    "sass": "^1.83.1",
-    "sass-loader": "^16.0.4"
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0"
   }
 }
