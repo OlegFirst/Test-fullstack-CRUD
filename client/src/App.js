@@ -1,8 +1,10 @@
+import Router from "./router";
+
 function App() {
   return (
-    <div className="App">
-      ok
-    </div>
+      <div className='Container'>
+          <Router />
+      </div>
   );
 }
 
