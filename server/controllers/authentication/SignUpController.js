@@ -7,19 +7,20 @@ class SignUpController {
             try {
                 const result = await signUpService(data);
 
+                console.log('0-', result)
+
+
                 const currentResult = JSON.stringify({
                     message: result.message,
-                    data: {
-                        name: result.data.name
-                    }
+                    data: result.data
                 });
 
                 console.log('-', currentResult)
 
-    //             if (!result.isSuccess) {
-    //                 res.status(responseStatuses.BAD_REQUEST).send(currentResult);
-    //                 return;
-    //             }
+                if (!result.isSuccess) {
+                    res.status(403).send(currentResult);
+                    return;
+                }
     //
     //             // Store token to the cookies
     //             setCookie(res, {

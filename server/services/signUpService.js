@@ -1,10 +1,26 @@
 import UserModel from "../models/UserModel.js";
 import { setSecure } from "./index.js";
 import { createTokens } from "./tokenService.js";
+import {signUpValidationSchema} from "../common/validationSchema.js";
 
 export const signUpService = async (args) => {
     const data = await JSON.parse(args);
     console.log('/', data)
+
+    const validationResult = signUpValidationSchema.validate(data);
+
+    console.log(1, validationResult, validationResult.error.details)
+
+    // Validating
+    if (validationResult.error) {
+        return {
+            isSuccess: false,
+            message: validationResult.error.message,
+            data: { errorInputName: validationResult.error.details[0].context.key }
+        };
+    }
+
+    console.log(2)
 
     // Matching with stored emails
     const storedUserByEmails = JSON.parse(await UserModel.findOneByEmail(data.email));

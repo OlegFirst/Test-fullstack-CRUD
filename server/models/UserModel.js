@@ -35,8 +35,12 @@ class UserModel {
             const query = `
                 INSERT INTO ${tableName}
                     (email, name, password, accesstoken, refreshtoken)
-                VALUES ('${email}', '${name}', '${password}', '${accessToken}', '${refreshToken}'
+                VALUES ('${email}', '${name}', '${password}', '${accessToken}', '${refreshToken}')
             `;
+
+            console.log('/////', query)
+
+
 
             databaseConnection(query, (res) => {
                 resolve(res);
