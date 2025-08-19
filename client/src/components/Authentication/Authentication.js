@@ -12,12 +12,6 @@ import {
 } from "../../common/constants";
 import interceptor from "../../common/interceptor";
 
-const test = {
-    name: 'ewreeq',
-    email: 'one-4@ukr.net',
-    password: 'ewwqqwwawqq'
-};
-
 const Authentication = ({ isLoginPage }) => {
     const inputsDataInitialState = isLoginPage ? loginInitialState : registrationInitialState;
     const endPoint = isLoginPage ? endPoints.SIGN_IN : endPoints.SIGN_UP;
@@ -42,7 +36,7 @@ const Authentication = ({ isLoginPage }) => {
         const { result, parsedResult } = await interceptor({
             method: requestMethods.POST,
             endPoint,
-            data: test
+            data: inputsData
         });
 
         const message = parsedResult.message;

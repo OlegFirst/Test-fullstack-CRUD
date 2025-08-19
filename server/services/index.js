@@ -11,7 +11,6 @@ export const serverCustomErrorMessage = (res, error) => {
         message: message,
         data: null
     }));
-    console.log('Server error =' + message);
 };
 
 export const bodyParser = (req, cb) => {

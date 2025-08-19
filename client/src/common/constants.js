@@ -18,6 +18,10 @@ export const navigationItems = [
     {
         title: 'Registration',
         path: '/registration'
+    },
+    {
+        title: 'Exit',
+        path: '/logout'
     }
 ];
 

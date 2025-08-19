@@ -17,7 +17,7 @@ export const authenticateCookieTokenMiddleware = async (req, res, next) => {
 
     // Access token is not present
     if (!token) {
-        res.redirect('/sign-in');
+        res.status(401).json({ message: 'Invalid token', data: null });
         return;
     }
 
@@ -38,21 +38,20 @@ const updateExpiredToken = async (req, res, accessToken) => {
     // Read refresh token
     const result = await UserModel.findOneByEmail(email);
     if (JSON.parse(result).length === 0) {
-        res.redirect('/sign-in');
+        res.status(401).json({ message: 'Invalid token', data: null });
         return;
     }
-    const token = JSON.parse(result)[0].refresh_token;
+    const token = JSON.parse(result)[0].refreshtoken;
 
     try {
         // Refresh token is good
         const decode = jwt.verify(token, process.env.REFRESH_TOKEN_EXPIRE_TIME);
         req.user = decode;
-        res.status(400)
-            .json({ message: 'Invalid token ( refresh token is good. Try to create new tokens ) ', data: null });
+        res.status(401).json({ message: 'Invalid token', data: null });
         next();
     } catch (error) {
         // Refresh token is bad
-        res.redirect('/sign-in');
+        res.status(401).json({ message: 'Invalid token', data: null });
     }
 };
 
