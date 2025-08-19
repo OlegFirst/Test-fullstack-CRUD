@@ -71,7 +71,7 @@ const Authentication = ({ isLoginPage }) => {
         <>
             <form className='Authentication pt-10 pb-5 flex justify-start items-start flex-col gap-8 w-8/12'>
                 {isLoginPage
-                    ? <Login error={error} />
+                    ? <Login error={error} onChange={handleOnChange} />
                     : <Registration error={error} onChange={handleOnChange} />
                 }
 

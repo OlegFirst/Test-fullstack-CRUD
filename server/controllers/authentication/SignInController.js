@@ -1,19 +1,17 @@
-import {bodyParser, serverErrorMessage, setCookie} from "../../services/index.js";
-import {signUpService} from "../../services/signUpService.js";
+import { bodyParser, serverErrorMessage, setCookie } from "../../services/index.js";
+import { signInService } from "../../services/signInService.js";
 
 class SignInController {
     async insert(req, res) {
         bodyParser(req, async (data) => {
             try {
-                const result = await signInInsert(data);
-
-                const currentResult = JSON.stringify({
-                    message: result.message,
-                    data: result.data
-                });
+                const result = await signInService(data);
 
                 if (!result.isSuccess) {
-                    res.status(403).send(currentResult);
+                    res.status(403).send(JSON.stringify({
+                        message: result.message,
+                        data: result.data
+                    }));
                     return;
                 }
 

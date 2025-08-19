@@ -66,7 +66,7 @@ export const storeUpdateTokens = async (data) => {
     if (!isUpdated) {
         return {
             isSuccess: false,
-            message: 'Помилка: користувач не оновлений',
+            message: 'Error. User data is not updated',
             data: null
         }
     }
@@ -77,7 +77,7 @@ export const storeUpdateTokens = async (data) => {
     };
     return {
         isSuccess: true,
-        message: 'Користувач оновлений',
+        message: 'User data is updated',
         data: currentData
     }
 }

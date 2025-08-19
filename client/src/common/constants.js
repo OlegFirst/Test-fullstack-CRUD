@@ -50,7 +50,8 @@ export const requestMethods = {
 
 export const endPoints = {
     SIGN_UP: 'sign-up',
-    SIGN_IN: 'sign-in'
+    SIGN_IN: 'sign-in',
+    PRODUCTS: 'products'
 };
 
 export const registrationInitialState = {
@@ -60,8 +61,8 @@ export const registrationInitialState = {
 };
 
 export const loginInitialState = {
-    email: '',
-    password: ''
+    email: 'one-4@ukr.net',
+    password: 'ewwqqwwawqq'
 };
 
 export const inputErrorInitialState = {

@@ -50,7 +50,7 @@ class UserModel {
         return new Promise((resolve, reject) => {
             const query = `
                 UPDATE ${tableName}
-                SET access_token = '${accessToken}', refreshtoken = '${refreshToken}'
+                SET accesstoken = '${accessToken}', refreshtoken = '${refreshToken}'
                 WHERE email = '${email}'
             `;
 

@@ -1,7 +1,7 @@
 import UserModel from "../models/UserModel.js";
 import { setSecure } from "./index.js";
 import { createTokens } from "./tokenService.js";
-import {signUpValidationSchema} from "../common/validationSchema.js";
+import { signUpValidationSchema } from "../common/validationSchema.js";
 
 export const signUpService = async (args) => {
     const data = await JSON.parse(args);
