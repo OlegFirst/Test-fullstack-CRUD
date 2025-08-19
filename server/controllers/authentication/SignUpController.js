@@ -1,4 +1,4 @@
-import { serverErrorMessage, bodyParser } from "../../services/index.js";
+import {serverErrorMessage, bodyParser, setCookie} from "../../services/index.js";
 import { signUpService } from "../../services/signUpService.js";
 
 class SignUpController {
@@ -7,27 +7,25 @@ class SignUpController {
             try {
                 const result = await signUpService(data);
 
-                console.log('0-', result)
-
-
                 const currentResult = JSON.stringify({
                     message: result.message,
                     data: result.data
                 });
 
-                console.log('-', currentResult)
-
                 if (!result.isSuccess) {
                     res.status(403).send(currentResult);
                     return;
                 }
-    //
-    //             // Store token to the cookies
-    //             setCookie(res, {
-    //                 token: result.data.accessToken
-    //             });
-    //
-                res.send('ok');
+
+                // Store token to the cookies
+                setCookie(res, {
+                    token: result.data.accessToken
+                });
+
+                res.status(200).send({
+                    message: 'Success',
+                    data: null
+                });
             } catch (err) {
                 serverErrorMessage(res, err);
             }

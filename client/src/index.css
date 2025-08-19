@@ -7,3 +7,7 @@ input {
     border: 1px solid grey;
     min-width: 100%;
 }
+
+.Registration__Input-wrapper {
+    min-width: 100%;
+}

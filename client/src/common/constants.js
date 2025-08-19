@@ -4,30 +4,26 @@ export const navigationItems = [
         path: '/'
     },
     {
-        title: 'Login',
-        path: '/login'
-    },
-    {
-        title: 'Registration',
-        path: '/registration'
-    },
-    {
         title: 'Dashboard',
         path: '/dashboard'
     },
     {
         title: 'Products',
         path: '/products'
+    },
+    {
+        title: 'Login',
+        path: '/login'
+    },
+    {
+        title: 'Registration',
+        path: '/registration'
     }
 ];
 
 export const hiddenItemTitlesForNonAuthorizedUser = [
-    navigationItems[3].title, navigationItems[4].title
+    navigationItems[1].title, navigationItems[2].title
 ];
-
-export const useInterceptorInitialState = {
-    isAuthorized: false
-};
 
 export const url = 'http://localhost:4001';
 
@@ -62,4 +58,9 @@ export const registrationInitialState = {
 export const loginInitialState = {
     email: '',
     password: ''
+};
+
+export const inputErrorInitialState = {
+    inputName: '',
+    message: ''
 };

@@ -6,7 +6,7 @@ const interceptor = async (request) => {
         case requestMethods.GET:
             return response(await getData(request));
         case requestMethods.POST:
-            return response(await postData(request));
+            return await response(await postData(request));
         case requestMethods.PUT:
             return response(await putData(request));
         case requestMethods.PATCH:
@@ -18,33 +18,24 @@ const interceptor = async (request) => {
     }
 };
 
-const response = (result) => {
-    console.log('============', result)
-
+const response = async (result) => {
     if (result.status === 404) {
         window.location.replace('/page-not-found');
-        return;
+        return  { result: null, parsedResult: null };
+    }
+
+    if (result.status === 400) {
+        alert('Server error');
+        return  { result: null, parsedResult: null };
     }
 
     try {
-        const parsedResult = result.json();
+        const parsedResult = await result.json();
         return { result, parsedResult };
     } catch (error) {
         console.log(error.message);
+        return { result: null, parsedResult: null };
     }
 };
 
 export default interceptor;
-
-// const [data, setData] = useState(useInterceptorInitialState);
-//
-// useEffect(() => {
-//     const cookie = document.cookie;
-//
-//     setData(prevState => ({
-//         ...prevState,
-//         isAuthorized: false
-//     }));
-// }, []);
-//
-// return data;

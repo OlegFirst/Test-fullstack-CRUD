@@ -38,10 +38,6 @@ class UserModel {
                 VALUES ('${email}', '${name}', '${password}', '${accessToken}', '${refreshToken}')
             `;
 
-            console.log('/////', query)
-
-
-
             databaseConnection(query, (res) => {
                 resolve(res);
             });

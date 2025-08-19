@@ -10,10 +10,12 @@ const NavItem = ({ title, path, isAuthorized }) => {
     }
 
     const isActive = path === location.pathname;
+    const isPositionRight = title === 'Login' || title === 'Registration';
+    const className = isPositionRight ? 'Header__Item border-solid border-4 border-gray ms-2 p-1' : 'Header__Item pr-5';
 
     return (
         <li
-            className='Header__Item pr-5'
+            className={className}
             style={{
                 color: isActive ? 'black' : 'white'
             }}
